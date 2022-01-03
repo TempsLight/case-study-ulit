@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include<conio.h>
 #include<string>
@@ -63,30 +62,27 @@ void MyClass::myMethod () {
 
     while (loginattempt < 3)
     {
-        cout << "USERNAME: ";
-        cin >> username;
-        cout << "PASSWORD: ";
-        cin >> password;
+        cout << "USERNAME: "; cin >> username;
+        cout << "PASSWORD: "; cin >> password;
 
-    if (username == "1" && password == "1")
-    {
-    break;
+        if (username == "1" && password == "1")
+            break;
+        else
+        {
+            cout << "Invalid login attempt. Please try again."<<endl;
+            loginattempt++;
+        }
     }
-    else
-    {
-    cout << "Invalid login attempt. Please try again."<<endl;
-    loginattempt++;
-    }
-    }
+    
     if (loginattempt == 3)
     {
             cout << "Intruder Detected!";
-            
     }
     system("cls");
     cout << "Thank you for logging in."<<endl;
 	
-    system("pause");
+	// if you want to pause for few minutes then automatically proceed use sleep()
+	sleep(5);
 
 }
 
@@ -97,47 +93,48 @@ int main(){
 	MyClass myObj;     // Create an object of MyClass
     myObj.myMethod();  // Call the method
 	
-
-//Main Menu
-
-system("CLS");
-string choice;
-cout<<"LIBRARY MANAGEMENT SYSTEM\n\n";
-cout<<"[1]ADD BOOK\n";
-cout<<"[2]DELETE BOOK\n";
-cout<<"[3]EDIT BOOK\n";
-cout<<"[4]SEARCH BOOK\n";
-cout<<"[5]VIEW ALL BOOKS\n";
-cout<<"[6]QUIT\n\n";
-
-cout<<"ENTER CHOICE: ";
-getline(cin,choice);
-system("CLS");
-
-if(choice=="1"){
-	addBook(counter); //function call
-}
-else if(choice=="2"){
-	deleteBook(counter); //function call
-}
-else if(choice=="3"){
-	editBook(counter); //function call
-}
-else if(choice=="4"){
-	searchBook(counter); //function call
-}
-else if(choice=="5"){
-	viewAllBooks(counter); //function call
-}
-else if(choice=="6"){
-	quit();	 //function call
-}
-else{
-	main();  //function call to self(main)
-}
-
-_getch();
-return 0;
+    //Main Menu
+    
+    system("CLS");
+    string choice;
+    cout<<"LIBRARY MANAGEMENT SYSTEM\n\n";
+    cout<<"[1]ADD BOOK\n";
+    cout<<"[2]DELETE BOOK\n";
+    cout<<"[3]EDIT BOOK\n";
+    cout<<"[4]SEARCH BOOK\n";
+    cout<<"[5]VIEW ALL BOOKS\n";
+    cout<<"[6]QUIT\n\n";
+    
+    cout<<"ENTER CHOICE: ";
+    getline(cin,choice);
+    system("CLS");
+    
+    switch(choice){
+    case "1":
+        addBook(counter); //function call
+        break;
+    case "2":
+        deleteBook(counter); //function call
+        break;
+    case "3":
+        editBook(counter); //function call
+        break;
+    case "4":
+        searchBook(counter); //function call
+        break;
+    case "5":
+        viewAllBooks(counter); //function call
+        break;
+    case "6":
+        quit();	 //function call
+        break;
+    default:
+        main();  //function call to self(main)
+        break;
+    }
+    
+    _getch();
+    return 0;
 }
 
 
