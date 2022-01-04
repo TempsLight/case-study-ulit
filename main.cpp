@@ -45,50 +45,66 @@ Book books[10];
 
 
 
-//main function
-int main(){
-    system("COLOR B0");
 
-    string userName;
-    string userPassword;
-    int loginAttempt = 0;
-    bool LogIn_Success = false;
-    while (loginAttempt < 3)
+
+
+
+    void LogIn()
     {
+        string userName;
+        string userPassword;
+        int loginAttempt = 0;
+        bool LogIn_Success = false;
+        while (loginAttempt < 3)
+    {
+        system("cls");
         cout << "Please enter your user name: ";
         cin >> userName;
         cout << "Please enter your user password: ";
         cin >> userPassword;
 
+
         if (userName == "admin" && userPassword == "admin1")
         {
-            cout << "Welcome admin!\n";
+            cout << "\n\nWelcome admin!\n\n";
             LogIn_Success=true;
             break;
         }
 
         else
         {
-            cout << "Invalid login attempt. Please try again.\n" << '\n';
+            cout << "\n\nInvalid login attempt. Please try again.\n\n" << '\n';
             loginAttempt++;
+            system("pause");
         }
     }
     if (loginAttempt == 3)
     {
-            cout << "Too many login attempts! The program will now terminate.";
+            cout << "\n\nToo many login attempts! The program will now terminate.\n\n";
             LogIn_Success = false;
-            return 0;
     }
 
-    cout << "Thank you for logging in.\n";
+    cout << "\n\nThank you for logging in.\n\n";
      system("pause");
 
      LogIn_Success = true;
+    }
+
+
+
+//main function
+int main(){
+    system("COLOR B0");
+
+
+    LogIn();
+
 
 //Main Menu
 Menu:
 system("CLS");
 string choice;
+int pili;
 cout<<"LIBRARY MANAGEMENT SYSTEM\n\n";
 cout<<"[1]ADD BOOK\n";
 cout<<"[2]DELETE BOOK\n";
@@ -103,21 +119,98 @@ system("CLS");
 
 if(choice=="1"){
 	addBook(counter); //function call
+
+	cout << "\n\nPress 1 to go back to main menu\n\n";
+	cout << "Press 2 to exit\n";
+	cin>>choice;
+
+	if(choice == "1")
+    {
+        goto Menu;
+    }
+	else{
+        return 0;
+	}
 }
 else if(choice=="2"){
 	deleteBook(counter); //function call
+
+	cout << "\n\nPress 1 to go back to main menu\n\n";
+	cout << "Press 2 to exit\n";
+	cin>>choice;
+
+	if(choice == "1")
+    {
+        goto Menu;
+    }
+	else{
+        return 0;
+	}
+
 }
 else if(choice=="3"){
 	editBook(counter); //function call
+
+	cout << "\n\nPress 1 to go back to main menu\n\n";
+	cout << "Press 2 to exit\n";
+	cin>>choice;
+
+	if(choice == "1")
+    {
+        goto Menu;
+    }
+	else{
+        return 0;
+	}
+
 }
 else if(choice=="4"){
 	searchBook(counter); //function call
+
+	cout << "\n\nPress 1 to go back to main menu\n\n";
+	cout << "Press 2 to exit\n";
+	cin>>choice;
+
+	if(choice == "1")
+    {
+        goto Menu;
+    }
+	else{
+        return 0;
+	}
+
 }
 else if(choice=="5"){
 	viewAllBooks(counter); //function call
+
+	cout << "\n\nPress 1 to go back to main menu\n\n";
+	cout << "Press 2 to exit\n";
+	cin>>choice;
+
+	if(choice == "1")
+    {
+        goto Menu;
+    }
+	else{
+        return 0;
+	}
+
 }
 else if(choice=="6"){
 	quit();	 //function call
+
+	cout << "\n\nPress 1 to go back to main menu\n\n";
+	cout << "Press 2 to exit\n";
+	cin>>choice;
+
+	if(choice == "1")
+    {
+        goto Menu;
+    }
+	else{
+        return 0;
+	}
+
 }
 else{
 	goto Menu;  //function call to self(main)
@@ -152,12 +245,12 @@ void addBook(int counter){
 		increment(counter);	//calling function to increment counter
 		cout<<"\nBOOK ADDED SUCCESSFULLY!\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 	else{
 		cout<<"YOU HAVE REACHED THE MAXIMUM NUMBER OF BOOKS TO BE ADDED!\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 }
 //deleteBook function
@@ -168,7 +261,7 @@ void deleteBook(int counter){
 	if(counter==0){
 		cout<<"THERE IS NO BOOK TO DELETE!\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 	cout<<"Enter Book No: ";
 	getline(cin,bookNumber);
@@ -196,16 +289,16 @@ void deleteBook(int counter){
 				decrement(counter); //calling function to decrement counter
 				cout<<"\nBOOK SUCCESSFULLY DELETED!\n\nPress any key to continue . . .";
 				_getch();
-				main();
+				//main();
 			}
 			else{
-				main();
+				//main();
 			}
 		}
 	}
 	cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
 	_getch();
-	main();
+	//main();
 }
 //Edit Book Function
 void editBook(int counter){
@@ -216,7 +309,7 @@ void editBook(int counter){
 	if(counter==0){
 		cout<<"THERE IS NO BOOK TO EDIT!\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 	cout<<"Enter Book No: ";
 	getline(cin,editIsbn);
@@ -253,13 +346,13 @@ void editBook(int counter){
 				editBook(counter);//function call to self
 			}
 			else{
-				main();
+				//main();
 			}
 		}
 }
 	cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
 	_getch();
-	main();
+	//main();
 }
 //Search Book Function
 void searchBook(int counter){
@@ -270,7 +363,7 @@ void searchBook(int counter){
 	if(counter==0){
 		cout<<"THERE IS NO BOOK TO SEARCH!\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 	cout<<"Enter Book No: ";
 	getline(cin,bookNumber);
@@ -289,13 +382,13 @@ void searchBook(int counter){
 	if(print){
 		cout<<"\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 	//if there's no book found
 	else{
 		cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
 		_getch();
-		main();
+		//main();
 	}
 }
 //View All Books Function
@@ -312,7 +405,7 @@ void viewAllBooks(int counter){
 	}
 	cout<<"Press any key to continue . . .";
 	_getch();
-	main();
+	//main();
 }
 void quit(){
 	//quit function
