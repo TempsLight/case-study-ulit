@@ -1,10 +1,9 @@
-
 #include<iostream>
 #include<conio.h>
 #include<string>
+#include <fstream>
 
 using namespace std;
-
 class Book {
 	private:
 		string bookNumber,title,author,edition,publication; //private variables
@@ -22,7 +21,6 @@ class Book {
 		string getEdition(){return edition;}
 		string getPublication(){return publication;}
 };
-
 //initializing functions with counter as parameter
 void addBook(int counter);
 void deleteBook(int counter);
@@ -30,76 +28,65 @@ void editBook(int counter);
 void searchBook(int counter);
 void viewAllBooks(int counter);
 void quit();
-
 //counter for Book array
 int counter=0;
-
 //function for incrementing counter
 void increment(int a){
 	a++;
 	counter=a;
 }
-
 //function for decrementing counter
 void decrement(int a){
 	a--;
 	counter=a;
 }
-
 //Book class array initialization
 Book books[10];
 
-class MyClass {        // The class
-  public:              // Access specifier
-    void myMethod();   // Method/function declaration
-};
 
-
-void MyClass::myMethod () {
-
-	string username;
-    string password;
-    int loginattempt = 0;
-
-    while (loginattempt < 3)
-    {
-        cout << "USERNAME: ";
-        cin >> username;
-        cout << "PASSWORD: ";
-        cin >> password;
-
-    if (username == "1" && password == "1")
-    {
-    break;
-    }
-    else
-    {
-    cout << "Invalid login attempt. Please try again."<<endl;
-    loginattempt++;
-    }
-    }
-    if (loginattempt == 3)
-    {
-            cout << "Intruder Detected!";
-            
-    }
-    system("cls");
-    cout << "Thank you for logging in."<<endl;
-	
-    system("pause");
-
-}
 
 //main function
 int main(){
     system("COLOR B0");
-	
-	MyClass myObj;     // Create an object of MyClass
-    myObj.myMethod();  // Call the method
-	
+
+    string userName;
+    string userPassword;
+    int loginAttempt = 0;
+    bool LogIn_Success = false;
+    while (loginAttempt < 3)
+    {
+        cout << "Please enter your user name: ";
+        cin >> userName;
+        cout << "Please enter your user password: ";
+        cin >> userPassword;
+
+        if (userName == "admin" && userPassword == "admin1")
+        {
+            cout << "Welcome admin!\n";
+            LogIn_Success=true;
+            break;
+        }
+
+        else
+        {
+            cout << "Invalid login attempt. Please try again.\n" << '\n';
+            loginAttempt++;
+        }
+    }
+    if (loginAttempt == 3)
+    {
+            cout << "Too many login attempts! The program will now terminate.";
+            LogIn_Success = false;
+            return 0;
+    }
+
+    cout << "Thank you for logging in.\n";
+     system("pause");
+
+     LogIn_Success = true;
 
 //Main Menu
-
+Menu:
 system("CLS");
 string choice;
 cout<<"LIBRARY MANAGEMENT SYSTEM\n\n";
@@ -133,13 +120,13 @@ else if(choice=="6"){
 	quit();	 //function call
 }
 else{
-	main();  //function call to self(main)
+	goto Menu;  //function call to self(main)
 }
 
 _getch();
 return 0;
-}
 
+}
 
 
 //addBook function
@@ -173,7 +160,6 @@ void addBook(int counter){
 		main();
 	}
 }
-
 //deleteBook function
 void deleteBook(int counter){
 	string bookNumber;
@@ -186,7 +172,6 @@ void deleteBook(int counter){
 	}
 	cout<<"Enter Book No: ";
 	getline(cin,bookNumber);
-
 	for(int i=0;i<counter;i++){
 		//finding a match using for loop
 		if(books[i].getIsbn()==bookNumber){
@@ -221,7 +206,6 @@ void deleteBook(int counter){
 	cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
 	_getch();
 	main();
-
 }
 //Edit Book Function
 void editBook(int counter){
