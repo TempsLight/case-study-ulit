@@ -66,7 +66,7 @@ Book books[10];
 
         if (userName == "admin" && userPassword == "admin1")
         {
-            cout << "\n\nWelcome admin!\n\n";
+            cout << "\n\nWelcome Librarian!\n\n";
             LogIn_Success=true;
             break;
         }
@@ -105,16 +105,18 @@ Menu:
 system("CLS");
 string choice;
 int pili;
-cout<<"LIBRARY MANAGEMENT SYSTEM\n\n";
-cout<<"[1]ADD BOOK\n";
-cout<<"[2]DELETE BOOK\n";
-cout<<"[3]EDIT BOOK\n";
-cout<<"[4]SEARCH BOOK\n";
-cout<<"[5]VIEW ALL BOOKS\n";
-cout<<"[6]QUIT\n\n";
-
-cout<<"ENTER CHOICE: ";
+cout<<"              ======================================================================================\n";
+cout<<"              //                                 LIBRARY MANAGEMENT SYSTEM                        //\n              //                                                                                  //\n";
+cout<<"              //                                 [1]ADD BOOK                                      //\n";
+cout<<"              //                                 [2]DELETE BOOK                                   //\n";
+cout<<"              //                                 [3]EDIT BOOK                                     //\n";
+cout<<"              //                                 [4]SEARCH BOOK                                   //\n";
+cout<<"              //                                 [5]VIEW ALL BOOKS                                //\n";
+cout<<"              //                                 [6]QUIT                                          //\n";
+cout<<"              ======================================================================================\n";
+cout<<"                                                 ENTER CHOICE: ";
 getline(cin,choice);
+cout<<"              ======================================================================================\n";
 system("CLS");
 
 if(choice=="1"){
@@ -225,52 +227,60 @@ return 0;
 //addBook function
 void addBook(int counter){
 	string bookNumber,title,author,edition,publication;
-	cout<<"ADD BOOK\n\n";
+	cout<<"                                                     ADD BOOK\n\n";
 	if(counter<10){
-		cout<<"Enter Book No: ";
+
+        cout<<"              ======================================================================================\n";
+		cout<<"                                                 Enter Book No: ";
 		getline(cin,bookNumber); //getline - just like cin but includes white spaces
-		cout<<"Enter Title: ";
+		cout<<"                                                 Enter Title: ";
 		getline(cin,title);
-		cout<<"Enter Author: ";
+		cout<<"                                                 Enter Author: ";
 		getline(cin,author);
-		cout<<"Enter Edition: ";
+		cout<<"                                                 Enter Edition: ";
 		getline(cin,edition);
-		cout<<"Enter Publication: ";
+		cout<<"                                                 Enter Publication: ";
 		getline(cin,publication);
+		cout<<"              ======================================================================================\n";
+
 		books[counter].setIsbn(bookNumber); //assigning the values entered to book object
 		books[counter].setTitle(title);
 		books[counter].setAuthor(author);
 		books[counter].setEdition(edition);
 		books[counter].setPublication(publication);
 		increment(counter);	//calling function to increment counter
-		cout<<"\nBOOK ADDED SUCCESSFULLY!\n\nPress any key to continue . . .";
+		cout<<"\n                               BOOK ADDED SUCCESSFULLY!\n\n";
 		_getch();
-		//main();
+
 	}
 	else{
-		cout<<"YOU HAVE REACHED THE MAXIMUM NUMBER OF BOOKS TO BE ADDED!\n\nPress any key to continue . . .";
+            cout<<"              ======================================================================================\n";
+            cout<<"              YOU HAVE REACHED THE MAXIMUM NUMBER OF BOOKS TO BE ADDED!\n\n";
+            cout<<"              ======================================================================================\n";
 		_getch();
-		//main();
+
 	}
 }
 //deleteBook function
 void deleteBook(int counter){
 	string bookNumber;
 	int choice;
-	cout<<"DELETE BOOK\n\n";
+	cout<<"                                                     DELETE BOOK\n\n";
 	if(counter==0){
-		cout<<"THERE IS NO BOOK TO DELETE!\n\nPress any key to continue . . .";
+            cout<<"              ======================================================================================\n";
+            cout<<"                             THERE IS NO BOOK TO DELETE!\n\n";
+            cout<<"              ======================================================================================\n";
 		_getch();
-		//main();
+
 	}
-	cout<<"Enter Book No: ";
+	cout<<"                                                 Enter Book No: ";
 	getline(cin,bookNumber);
 	for(int i=0;i<counter;i++){
 		//finding a match using for loop
 		if(books[i].getIsbn()==bookNumber){
-			cout<<"\nBOOK FOUND\n\n";
-			cout<<"Do you want to delete?\n[1]Yes\n[2]No\n\nEnter Choice: ";
-			cin>>choice;
+			cout<<"\n                                               BOOK FOUND\n\n";
+			cout<<"                                                 Do you want to delete?\n                                                 [1]Yes\n                                                 [2]No\n\n                                                 Enter Choice: ";
+			cin>>                                                   choice;
 			if(choice==1){
 				books[i].setIsbn(""); //setting the value to none
 				books[i].setTitle("");
@@ -287,18 +297,18 @@ void deleteBook(int counter){
 				books[9].setEdition("");
 				books[9].setPublication("");
 				decrement(counter); //calling function to decrement counter
-				cout<<"\nBOOK SUCCESSFULLY DELETED!\n\nPress any key to continue . . .";
+				cout<<"\n                                                 BOOK SUCCESSFULLY DELETED!\n\n";
 				_getch();
-				//main();
+
 			}
 			else{
-				//main();
+
 			}
 		}
 	}
-	cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
+	cout<<"\n                                               BOOK NOT FOUND!\n\n";
 	_getch();
-	//main();
+
 }
 //Edit Book Function
 void editBook(int counter){
@@ -307,9 +317,9 @@ void editBook(int counter){
 	string bookNumber,title,author,edition,publication;
 	cout<<"\nEDIT BOOK\n\n";
 	if(counter==0){
-		cout<<"THERE IS NO BOOK TO EDIT!\n\nPress any key to continue . . .";
+		cout<<"THERE IS NO BOOK TO EDIT!\n\n";
 		_getch();
-		//main();
+
 	}
 	cout<<"Enter Book No: ";
 	getline(cin,editIsbn);
@@ -341,18 +351,18 @@ void editBook(int counter){
 				books[i].setAuthor(author);
 				books[i].setEdition(edition);
 				books[i].setPublication(publication);
-				cout<<"\nBOOK EDITED SUCCESSFULLY!\n\nPress any key to continue . . .";
+				cout<<"\nBOOK EDITED SUCCESSFULLY!\n\n";
 				_getch();
 				editBook(counter);//function call to self
 			}
 			else{
-				//main();
+
 			}
 		}
 }
-	cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
+	cout<<"\nBOOK NOT FOUND!\n\n";
 	_getch();
-	//main();
+
 }
 //Search Book Function
 void searchBook(int counter){
@@ -361,9 +371,9 @@ void searchBook(int counter){
 	bool print = false; //boolean expression to decide which to print
 	cout<<"SEARCH BOOK\n\n";
 	if(counter==0){
-		cout<<"THERE IS NO BOOK TO SEARCH!\n\nPress any key to continue . . .";
+		cout<<"THERE IS NO BOOK TO SEARCH!\n\n";
 		_getch();
-		//main();
+
 	}
 	cout<<"Enter Book No: ";
 	getline(cin,bookNumber);
@@ -380,15 +390,15 @@ void searchBook(int counter){
 		}
 	}
 	if(print){
-		cout<<"\n\nPress any key to continue . . .";
+		cout<<"\n\n";
 		_getch();
-		//main();
+
 	}
 	//if there's no book found
 	else{
-		cout<<"\nBOOK NOT FOUND!\n\nPress any key to continue . . .";
+		cout<<"\nBOOK NOT FOUND!\n\n";
 		_getch();
-		//main();
+
 	}
 }
 //View All Books Function
@@ -403,9 +413,9 @@ void viewAllBooks(int counter){
 		cout<<"EDITION: "<<books[i].getEdition()<<endl;
 		cout<<"PUBLICATION: "<<books[i].getPublication()<<endl<<endl;
 	}
-	cout<<"Press any key to continue . . .";
+	cout<<"";
 	_getch();
-	//main();
+
 }
 void quit(){
 	//quit function
